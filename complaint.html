@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Complaint Page</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:linear-gradient(to right,#36d1dc,#5b86e5);
+}
+
+/* HEADER */
+.header{
+  background:#111;
+  color:white;
+  padding:15px;
+  text-align:center;
+  font-size:24px;
+}
+
+/* SIDEBAR */
+.sidebar{
+  width:220px;
+  height:100vh;
+  background:#1e1e2f;
+  position:fixed;
+  padding-top:20px;
+}
+
+.sidebar a{
+  display:block;
+  color:white;
+  padding:12px;
+  text-decoration:none;
+  margin:8px;
+  border-radius:6px;
+}
+
+.sidebar a:hover{
+  background:#00c6ff;
+}
+
+/* MAIN */
+.main{
+  margin-left:230px;
+  padding:20px;
+}
+
+/* FORM */
+.form-box{
+  background:white;
+  padding:25px;
+  width:420px;
+  border-radius:12px;
+  box-shadow:0px 5px 15px rgba(0,0,0,0.2);
+}
+
+input,textarea{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+}
+
+/* BUTTON */
+button{
+  background:#5b86e5;
+  color:white;
+  border:none;
+  padding:10px;
+  width:100%;
+  border-radius:6px;
+  font-size:16px;
+}
+
+button:hover{
+  background:#36d1dc;
+}
+
+/* TABLE */
+table{
+  width:100%;
+  margin-top:30px;
+  border-collapse:collapse;
+  background:white;
+}
+
+th,td{
+  padding:10px;
+  border:1px solid #ddd;
+  text-align:center;
+}
+
+th{
+  background:#5b86e5;
+  color:white;
+}
+
+/* STATUS */
+.pending{
+  color:red;
+  font-weight:bold;
+}
+
+.done{
+  color:green;
+  font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+🏠 Hostel Management System - Complaint
+</div>
+
+<div class="sidebar">
+<a href="dashboard.html">🏠 Dashboard</a>
+<a href="register.html">📝 Registration</a>
+<a href="room.html">🛏 Room</a>
+<a href="students.html">📋 Students</a>
+<a href="fees.html">💰 Fees</a>
+<a href="complaint.html">⚠ Complaint</a>
+<a href="logout.html">🚪 Logout</a>
+</div>
+
+<div class="main">
+
+<h2>Submit Complaint</h2>
+
+<div class="form-box">
+<form onsubmit="return addComplaint()">
+
+<input type="text" id="name" placeholder="Student Name" required>
+
+<textarea id="complaint" placeholder="Write your complaint..." required></textarea>
+
+<button type="submit">Submit Complaint</button>
+
+</form>
+</div>
+
+<!-- TABLE -->
+<h2>Complaint Records</h2>
+
+<table id="table">
+<tr>
+<th>Name</th>
+<th>Complaint</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>Rahul Sharma</td>
+<td>Water problem in room</td>
+<td class="pending">Pending</td>
+</tr>
+
+<tr>
+<td>Priya Patil</td>
+<td>Fan not working</td>
+<td class="done">Resolved</td>
+</tr>
+
+<tr>
+<td>Amit Verma</td>
+<td>Food issue</td>
+<td class="pending">Pending</td>
+</tr>
+
+</table>
+
+</div>
+
+<script>
+function addComplaint(){
+  var name=document.getElementById("name").value;
+  var complaint=document.getElementById("complaint").value;
+
+  var table=document.getElementById("table");
+  var row=table.insertRow();
+
+  row.insertCell(0).innerHTML=name;
+  row.insertCell(1).innerHTML=complaint;
+  row.insertCell(2).innerHTML="<span class='pending'>Pending</span>";
+
+  alert("Complaint Submitted Successfully!");
+
+  // 🔥 NEW: redirect to logout page
+  window.location.href="logout.html";
+
+  return false;
+}
+</script>
+
+</body>
+</html>

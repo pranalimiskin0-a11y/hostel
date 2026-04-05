@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Details</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:linear-gradient(to right,#36d1dc,#5b86e5);
+}
+
+/* HEADER */
+.header{
+  background:#111;
+  color:white;
+  padding:15px;
+  text-align:center;
+  font-size:24px;
+}
+
+/* SIDEBAR */
+.sidebar{
+  width:220px;
+  height:100vh;
+  background:#1e1e2f;
+  position:fixed;
+  padding-top:20px;
+}
+
+.sidebar a{
+  display:block;
+  color:white;
+  padding:12px;
+  text-decoration:none;
+  margin:8px;
+  border-radius:6px;
+}
+
+.sidebar a:hover{
+  background:#00c6ff;
+}
+
+/* MAIN */
+.main{
+  margin-left:230px;
+  padding:20px;
+}
+
+/* TABLE */
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  margin-top:20px;
+}
+
+th,td{
+  padding:10px;
+  border:1px solid #ddd;
+  text-align:center;
+}
+
+th{
+  background:#5b86e5;
+  color:white;
+}
+
+/* SEARCH BOX */
+.search{
+  padding:10px;
+  width:300px;
+  border-radius:5px;
+  border:1px solid #ccc;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+🏠 Hostel Management System - Student Details
+</div>
+
+<div class="sidebar">
+<a href="dashboard.html">🏠 Dashboard</a>
+<a href="register.html">📝 Registration</a>
+<a href="room.html">🛏 Room</a>
+<a href="students.html">📋 Students</a>
+<a href="fees.html">💰 Fees</a>
+<a href="complaint.html">⚠ Complaint</a>
+<a href="logout.html">🚪 Logout</a>
+</div>
+
+<div class="main">
+
+<h2>Student List</h2>
+
+<!-- SEARCH -->
+<input type="text" id="search" class="search" placeholder="Search student..." onkeyup="searchStudent()">
+
+<!-- TABLE -->
+<table id="table">
+<tr>
+<th>Name</th>
+<th>Age</th>
+<th>Room</th>
+<th>Mobile</th>
+<th>Fees Status</th>
+</tr>
+
+<tr>
+<td>Rahul Sharma</td>
+<td>20</td>
+<td>101</td>
+<td>9876543210</td>
+<td>Paid</td>
+</tr>
+
+<tr>
+<td>Priya Patil</td>
+<td>19</td>
+<td>102</td>
+<td>9123456780</td>
+<td>Pending</td>
+</tr>
+
+<tr>
+<td>Amit Verma</td>
+<td>21</td>
+<td>103</td>
+<td>9988776655</td>
+<td>Paid</td>
+</tr>
+
+<tr>
+<td>Sneha Joshi</td>
+<td>20</td>
+<td>104</td>
+<td>9090909090</td>
+<td>Pending</td>
+</tr>
+
+</table>
+
+</div>
+
+<script>
+function searchStudent(){
+  var input=document.getElementById("search").value.toLowerCase();
+  var table=document.getElementById("table");
+  var tr=table.getElementsByTagName("tr");
+
+  for(var i=1;i<tr.length;i++){
+    var td=tr[i].getElementsByTagName("td")[0];
+    if(td){
+      var txt=td.textContent || td.innerText;
+      if(txt.toLowerCase().indexOf(input)>-1){
+        tr[i].style.display="";
+      }else{
+        tr[i].style.display="none";
+      }
+    }
+  }
+}
+</script>
+
+</body>
+</html>

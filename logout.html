@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Logout</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:linear-gradient(to right,#00c6ff,#0072ff);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+/* BOX */
+.box{
+  background:white;
+  padding:35px;
+  width:380px;
+  text-align:center;
+  border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+h2{
+  color:#0072ff;
+}
+
+p{
+  color:#333;
+}
+
+/* INPUT */
+textarea{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+
+/* BUTTON */
+button{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  border:none;
+  background:#0072ff;
+  color:white;
+  border-radius:6px;
+  font-size:15px;
+}
+
+button:hover{
+  background:#00c6ff;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2 id="title">Logout Successfully ✅</h2>
+
+<p id="msg1"><b>Thank You for Visiting 🙏</b></p>
+
+<p id="msg2">Please share your feedback:</p>
+
+<form onsubmit="return submitFeedback()">
+<textarea id="feedback" placeholder="Write your feedback..." required></textarea>
+<button type="submit">Submit Feedback</button>
+</form>
+
+<button onclick="goLogin()">Back to Login</button>
+
+</div>
+
+<script>
+
+function submitFeedback(){
+  alert("Thank you for your feedback!");
+
+  // 🔥 NEW CHANGES
+  document.getElementById("title").innerHTML="Successful Logout 🎉";
+  document.getElementById("msg1").innerHTML="<b>Thank You ☺️</b>";
+  document.getElementById("msg2").innerHTML="Your feedback has been submitted successfully!";
+
+  return false;
+}
+
+function goLogin(){
+  window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>

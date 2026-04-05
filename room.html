@@ -1,0 +1,164 @@
+<!DOCTYPE html>    
+<html lang="en">      
+<head>      
+<meta charset="UTF-8">      
+<title>Hostel Room Allotment</title>    
+
+<style>      
+body {      
+    font-family: Arial;      
+    margin: 0;      
+    background-color: #e6f4ff;      
+}      
+
+header {
+background-color: #4da6ff;
+color: white;
+padding: 20px;
+text-align: center;
+}
+
+.container {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+padding: 20px;
+}
+
+.room {
+background: white;
+border-radius: 12px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+width: 260px;
+margin: 15px;
+overflow: hidden;
+transition: 0.3s;
+}
+
+.room:hover {
+transform: scale(1.05);
+}
+
+.room img {
+width: 100%;
+height: 180px;
+object-fit: cover;
+}
+
+.room h3 {
+margin: 10px;
+}
+
+.price {
+color: green;
+font-weight: bold;
+margin-left: 10px;
+}
+
+button {
+margin: 10px;
+padding: 10px;
+width: 90%;
+background: #4da6ff;
+color: white;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+}
+
+button:hover {
+background: #0073e6;
+}
+
+.info {
+background: white;
+margin: 20px;
+padding: 20px;
+border-radius: 10px;
+}
+</style>    
+
+</head>    
+
+<body onload="loadSavedImages()">    
+
+<header>
+<h1>🏠 Hostel Management System</h1>
+<p>Room Allotment Page</p>
+</header>    
+
+<div class="container">    
+
+<div class="room">      
+    <img id="img1">      
+    <input type="file" onchange="loadImage(event, 'img1')">      
+    <h3>Single Room</h3>      
+    <p class="price">₹3000 / month</p>      
+    <button onclick="goToNextPage()">Book Now</button>      
+</div>    
+
+<div class="room">      
+    <img id="img2">      
+    <input type="file" onchange="loadImage(event, 'img2')">      
+    <h3>Double Sharing Room</h3>      
+    <p class="price">₹5000 / month</p>      
+    <button onclick="goToNextPage()">Book Now</button>      
+</div>    
+
+<div class="room">      
+    <img id="img3">      
+    <input type="file" onchange="loadImage(event, 'img3')">      
+    <h3>Triple Sharing Room</h3>      
+    <p class="price">₹7000 / month</p>      
+    <button onclick="goToNextPage()">Book Now</button>      
+</div>    
+
+<div class="room">      
+    <img id="img4">      
+    <input type="file" onchange="loadImage(event, 'img4')">      
+    <h3>Deluxe Room</h3>      
+    <p class="price">₹9000 / month</p>      
+    <button onclick="goToNextPage()">Book Now</button>      
+</div>  
+
+</div>    
+
+<div class="info">      
+    <h2>Hostel Information</h2>      
+    <p>✔ Clean & Safe Environment</p>      
+    <p>✔ 24/7 Water & Electricity</p>      
+    <p>✔ Free Wi-Fi Available</p>      
+    <p>✔ Mess Facility Available</p>      
+</div>    
+
+<script>    
+function loadImage(event, imgId) {    
+    const file = event.target.files[0];    
+    const reader = new FileReader();    
+
+    reader.onload = function() {    
+        const imageData = reader.result;    
+        document.getElementById(imgId).src = imageData;    
+        localStorage.setItem(imgId, imageData);    
+    }    
+
+    reader.readAsDataURL(file);
+}
+
+function loadSavedImages() {
+for (let i = 1; i <= 4; i++) {
+let savedImage = localStorage.getItem("img" + i);
+if (savedImage) {
+document.getElementById("img" + i).src = savedImage;
+}
+}
+}
+
+// ✅ SAFE REDIRECT (no file error)
+function goToNextPage() {
+    window.open("dashboard.html", "_self");
+}
+</script>  
+
+</body>
+</html>
